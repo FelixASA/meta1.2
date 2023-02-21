@@ -1,41 +1,7 @@
 <template>
   <v-card>
-    <v-app-bar
-        color="primary"
-        density="compact"
-      >
-        <template v-slot:prepend>
-          <v-app-bar-nav-icon color="secundary" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        </template>
-
-        <v-app-bar-title>Opciones</v-app-bar-title>
-
-      </v-app-bar>
-
       <h1 v-if="pagina === 1"> <Pagina1 /></h1>
       <h1 v-if="pagina === 2"> <Pagina2 /></h1>
-
-
-
-      <v-navigation-drawer
-        v-model="drawer"
-        temporary
-      >
-        <v-list-item
-          title="Felix Arredondo"
-        ></v-list-item>
-
-        <v-divider></v-divider>
-
-        <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home" @click="pagina = 1"></v-list-item>
-          <v-list-item prepend-icon="mdi-table" title="Tabla" value="tabla" @click="pagina = 2"></v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-      <v-main style="height: 100vh">
-        <div class="d-flex justify-center align-center h-100">
-        </div>
-      </v-main>
 
   </v-card>
 
@@ -44,14 +10,16 @@
 <script>
 import Pagina1 from '@/components/pagina1.vue'
 import Pagina2 from '@/components/pagina2.vue'
+import AppBar from '@/layouts/default/AppBar.vue'
+
 
 
 export default {
-  components: {Pagina1, Pagina2},
+  components: {Pagina1, Pagina2, AppBar},
   data() {
+    pagina: AppBar.pagina
     return {
       drawer: null,
-      pagina: 1
     }
   },
 }
